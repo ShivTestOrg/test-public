@@ -7,4 +7,5 @@ plugins:
         with: 
           matchThreshold: 0.95
           warningThreshold: 0.75
+          jobMatchingThreshold: 0.75
 
