@@ -2,7 +2,7 @@ plugins:
   - name: test-app
     id: test-app
     uses:
-      - plugin: http://localhost:5000
+      - plugin: https://ubiquity-os-comment-vector-embeddings.sshivaditya.workers.dev
         runsOn: [ "issue_comment.created", "issue_comment.edited", "issue_comment.deleted", "issues.opened", "issues.edited", "issues.deleted", "issues.labeled", "issues.assigned", "issues.unassigned" ]
         with: 
           matchThreshold: 0.95
