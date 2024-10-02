@@ -6,6 +6,5 @@ plugins:
         runsOn: [ "issue_comment.created", "issue_comment.edited", "issue_comment.deleted", "issues.opened", "issues.edited", "issues.deleted", "issues.labeled", "issues.assigned", "issues.unassigned" ]
         with: 
           matchThreshold: 0.1
-          warningThreshold: 0.4
-          jobMatchingThreshold: 0.4
-
+          warningThreshold: 0.3
+          jobMatchingThreshold: 0.3
