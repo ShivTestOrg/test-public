@@ -5,5 +5,5 @@ plugins:
       - plugin: http://localhost:5000
         runsOn: ["issue_comment.created"]
         with: 
-          model: "microsoft/phi-3.5-mini-128k-instruct"
+          model: "google/gemini-flash-1.5"
           openAiBaseUrl: "https://openrouter.ai/api/v1"
