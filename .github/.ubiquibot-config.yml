@@ -5,5 +5,5 @@ plugins:
       - plugin: http://localhost:5000
         runsOn: ["issue_comment.created"]
         with: 
-          model: "google/gemini-pro-1.5"
+          model: "openai/o1-mini"
           openAiBaseUrl: "https://openrouter.ai/api/v1"
