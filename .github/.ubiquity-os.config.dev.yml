@@ -5,6 +5,6 @@ plugins:
       - plugin: http://localhost:5000
         runsOn: ["issue_comment.created"]
         with: 
-          model: "anthropic/claude-3.5-sonnet"
+          model: "openai/o1-mini"
           openAiBaseUrl: "https://openrouter.ai/api/v1"
           
