@@ -3,8 +3,8 @@ plugins:
     id: test-app
     uses:
       - plugin: http://localhost:5000
-        runsOn: [ "issue_comment.created", "issue_comment.edited", "issue_comment.deleted", "issues.opened", "issues.edited", "issues.deleted", "issues.labeled", "issues.assigned", "issues.unassigned" ]
+        runsOn: ["issue_comment.created"]
         with: 
-          matchThreshold: 0.9
-          warningThreshold: 0.7
-          jobMatchingThreshold: 0.7
+          model: "openai/o1-mini"
+          openAiBaseUrl: "https://openrouter.ai/api/v1"
+          
