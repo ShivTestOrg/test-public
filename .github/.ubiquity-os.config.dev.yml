@@ -3,8 +3,8 @@ plugins:
     id: test-app
     uses:
       - plugin: http://localhost:5000
-        runsOn: ["issue_comment.created"]
+        runsOn: [ "issue_comment.created", "issue_comment.edited", "issue_comment.deleted", "issues.opened", "issues.edited", "issues.deleted", "issues.labeled", "issues.transferred"] ]
         with: 
-          model: "anthropic/claude-3.5-sonnet"
-          openAiBaseUrl: "https://openrouter.ai/api/v1"
-          
+          matchThreshold: 0.9
+          warningThreshold: 0.7
+          jobMatchingThreshold: 0.7
