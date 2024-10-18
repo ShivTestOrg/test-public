@@ -4,3 +4,6 @@ plugins:
     uses:
       - plugin: https://command-ask.sshivaditya.workers.dev
         runsOn: ["issue_comment.created"]
+        with: 
+          model: "openai/o1-mini"
+          openAiBaseUrl: "https://openrouter.ai/api/v1"
