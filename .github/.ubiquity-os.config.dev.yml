@@ -2,7 +2,7 @@ plugins:
   - name: test-app
     id: test-app
     uses:
-      - plugin: sshivaditya2019/command-ask:compute.yml@development
+      - plugin: http://localhost:5000
         runsOn: ["issue_comment.created"]
         with: 
           model: "openai/o1-mini"
