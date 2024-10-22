@@ -2,8 +2,9 @@ plugins:
   - name: test-app
     id: test-app
     uses:
-      - plugin: sshivaditya2019/command-ask:compute.yml@development
-        runsOn: ["issue_comment.created"]
+      - plugin: https://ubiquity-os-comment-vector-embeddings-development.ubiquity.workers.dev
+        runsOn: [ "issue_comment.created", "issue_comment.edited", "issue_comment.deleted", "issues.opened", "issues.edited", "issues.deleted", "issues.labeled", "issues.assigned", "issues.unassigned" ]
         with: 
-          model: "openai/o1-mini"
-          openAiBaseUrl: "https://openrouter.ai/api/v1"
+          matchThreshold: 0.1
+          warningThreshold: 0.3
+          jobMatchingThreshold: 0.3
