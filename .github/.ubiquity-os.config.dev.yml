@@ -8,3 +8,8 @@ plugins:
           matchThreshold: 0.90
           warningThreshold: 0.70
           jobMatchingThreshold: 0.70
+      - plugin: sshivaditya2019/command-ask:compute.yml@development
+        runsOn: ["issue_comment.created"],
+        with:
+          model: "openai/o1-mini"
+          openAiBaseUrl: "https://openrouter.ai/api/v1"
