@@ -2,12 +2,6 @@ plugins:
   - name: test-app
     id: test-app
     uses:
-      - plugin: http://localhost:5000
-        runsOn: [ "issue_comment.created", "issue_comment.edited", "issue_comment.deleted", "issues.opened", "issues.edited", "issues.deleted", "issues.labeled", "issues.assigned", "issues.unassigned" ]
-        with: 
-          matchThreshold: 0.90
-          warningThreshold: 0.70
-          jobMatchingThreshold: 0.70
       - plugin: sshivaditya2019/command-ask:compute.yml@development
         runsOn: ["issue_comment.created"]
         with:
