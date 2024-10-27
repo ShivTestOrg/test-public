@@ -2,9 +2,8 @@ plugins:
   - name: test-app
     id: test-app
     uses:
-      - plugin: http://localhost:5000
-        runsOn: [ "issue_comment.created", "issue_comment.edited", "issue_comment.deleted", "issues.opened", "issues.edited", "issues.deleted", "issues.labeled", "issues.assigned", "issues.unassigned" ]
+      - plugin: https://command-ask.sshivaditya.workers.dev
+        runsOn: ["issue_comment.created"]
         with: 
-          matchThreshold: 0.90
-          warningThreshold: 0.75
-          jobMatchingThreshold: 0.75
+          model: "openai/o1-mini"
+          openAiBaseUrl: "https://openrouter.ai/api/v1"
