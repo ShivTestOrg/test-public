@@ -2,7 +2,7 @@ plugins:
   - name: test-app
     id: test-app
     uses:
-      - plugin: http://localhost:5000
+      - plugin: sshivaditya2019/issue-comment@issuesim
         runsOn: [ "issue_comment.created", "issue_comment.edited", "issue_comment.deleted", "issues.opened", "issues.edited", "issues.deleted", "issues.labeled", "issues.transferred" ]
         with: 
           matchThreshold: 0.9
