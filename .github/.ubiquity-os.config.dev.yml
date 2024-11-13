@@ -1,14 +1,12 @@
 plugins:
-  - name: test-app
-    id: test-app
-    uses:
-      - plugin: sshivaditya2019/issue-comment-embeddings@issuesim
-        with: 
-          matchThreshold: 0.9
-          warningThreshold: 0.7
-          jobMatchingThreshold: 0.7
-    uses:
-      - plugin: sshivaditya2019/command-ask:compute.yml@development
-        with: 
-          model: "openai/o1-mini"
+  - uses:
+    - plugin: sshivaditya2019/issue-comment-embeddings@issuesim
+      with: 
+        matchThreshold: 0.9
+        warningThreshold: 0.7
+        jobMatchingThreshold: 0.7
+  - uses:
+    - plugin: sshivaditya2019/command-ask:compute.yml@development
+      with: 
+        model: "openai/o1-mini"
     
