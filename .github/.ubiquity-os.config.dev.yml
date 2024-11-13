@@ -3,14 +3,12 @@ plugins:
     id: test-app
     uses:
       - plugin: sshivaditya2019/issue-comment-embeddings@issuesim
-        runsOn: [ "issue_comment.created", "issue_comment.edited", "issue_comment.deleted", "issues.opened", "issues.edited", "issues.deleted", "issues.labeled", "issues.transferred" ]
         with: 
           matchThreshold: 0.9
           warningThreshold: 0.7
           jobMatchingThreshold: 0.7
     uses:
       - plugin: sshivaditya2019/command-ask:compute.yml@development
-        runsOn: ["issue_comment.created"]
         with: 
           model: "openai/o1-mini"
     
