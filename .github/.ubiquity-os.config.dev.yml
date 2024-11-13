@@ -6,7 +6,7 @@ plugins:
         warningThreshold: 0.7
         jobMatchingThreshold: 0.7
   - uses:
-    - plugin: sshivaditya2019/command-ask:compute.yml@rlhf
+    - plugin: http://localhost:5000
       with: 
         model: "openai/o1-mini"
         openAiBaseUrl: "https://openrouter.ai/api/v1"
