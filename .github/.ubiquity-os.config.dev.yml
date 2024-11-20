@@ -1,8 +1,12 @@
 plugins:
   - uses:
-    - plugin: http://localhost:5000
+    - plugin: sshivaditya2019/issue-comment-embeddings@issuesim
       with: 
         matchThreshold: 0.9
         warningThreshold: 0.7
         jobMatchingThreshold: 0.7
-
+  - uses:
+    - plugin: http://localhost:5000
+      with: 
+        model: "openai/o1-mini"
+        openAiBaseUrl: "https://openrouter.ai/api/v1"
