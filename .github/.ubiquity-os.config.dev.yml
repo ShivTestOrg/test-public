@@ -1,8 +1,7 @@
 plugins:
   - uses:
-    - plugin: sshivaditya2019/issue-comment-embeddings@issuesim
+    - plugin: http://localhost:4000
       with: 
-        bypassSignatureVerification: true
         matchThreshold: 0.9
         warningThreshold: 0.7
         jobMatchingThreshold: 0.7
