@@ -1,7 +1,13 @@
 plugins:
   - uses:
-    - plugin: http://localhost:4004
+    - plugin: sshivaditya2019/issue-comment-embeddings@issuematch
       with: 
+        bypassSignatureVerification: true
         matchThreshold: 0.9
         warningThreshold: 0.7
         jobMatchingThreshold: 0.7
+  - uses:
+    - plugin: http://localhost:5000
+      with: 
+        model: "openai/o1-mini"
+        openAiBaseUrl: "https://openrouter.ai/api/v1"
