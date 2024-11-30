@@ -2,9 +2,9 @@ plugins:
   - uses:
     - plugin: sshivaditya2019/issue-comment-embeddings@issuematch
       with: 
-        matchThreshold: 0
-        warningThreshold: 0
-        jobMatchingThreshold: 0
+        matchThreshold: 0.9
+        warningThreshold: 0.7  
+        jobMatchingThreshold: 0.7
   - uses:
     - plugin: http://localhost:5000
       with: 
