@@ -5,3 +5,4 @@ plugins:
         matchThreshold: 0.9
         warningThreshold: 0.7  
         jobMatchingThreshold: 0.7
+        alwaysRecommend: 3
