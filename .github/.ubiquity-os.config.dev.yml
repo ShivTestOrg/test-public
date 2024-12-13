@@ -1,8 +1,6 @@
 plugins:
   - uses:
-    - plugin: http://localhost:4004
+    - plugin: http://localhost:5000
       with: 
-        alwaysRecommend: 5
-        matchThreshold: 0.9
-        warningThreshold: 0.7
-        jobMatchingThreshold: 1.0
+        model: "openai/o1-mini"
+        openAiBaseUrl: "https://openrouter.ai/api/v1"
