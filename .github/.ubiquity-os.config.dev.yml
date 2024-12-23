@@ -3,5 +3,5 @@ plugins:
     - plugin: sshivaditya2019/issue-comment-embeddings@linkref
       with: 
         matchThreshold: 0.9
-        warningThreshold: 0.7  
-        jobMatchingThreshold: 0.7
+        warningThreshold: 0.5  
+        jobMatchingThreshold: 0.5
