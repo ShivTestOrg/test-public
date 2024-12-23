@@ -1,6 +1,7 @@
 plugins:
   - uses:
-    - plugin: http://localhost:4005
+    - plugin: sshivaditya2019/issue-comment-embeddings@scraper
       with: 
-        model: "openai/o1-mini"
-        openAiBaseUrl: "https://openrouter.ai/api/v1"
+        matchThreshold: 0.9
+        warningThreshold: 0.7  
+        jobMatchingThreshold: 0.7
