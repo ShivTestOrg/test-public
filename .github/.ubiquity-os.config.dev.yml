@@ -1,6 +1,6 @@
 plugins:
   - uses:
-    - plugin: sshivaditya2019/issue-comment-embeddings@scraper
+    - plugin: sshivaditya2019/issue-comment-embeddings@linkref
       with: 
         matchThreshold: 0.9
         warningThreshold: 0.7  
