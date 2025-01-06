@@ -5,10 +5,10 @@ plugins:
         matchThreshold: 0.9
         warningThreshold: 0.7
         jobMatchingThreshold: 0.7
-        maxTokens: 100000
-        maxDepth: 10
   - uses:
     - plugin: shiv810/command-ask:compute.yml@context
       with: 
         model: "openai/o1-mini"
         openAiBaseUrl: "https://openrouter.ai/api/v1"
+        maxTokens: 100000
+        maxDepth: 10
