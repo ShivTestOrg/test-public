@@ -1,7 +1,7 @@
 plugins:
   - skipBotEvents: false
     uses:
-      - plugin: ubiquity-os/personal-agent-bridge
+      - plugin: shiv810/personal-agent-bridge
         with: {}
   - uses:
     - plugin: shiv810/issue-comment-embeddings@linkref
