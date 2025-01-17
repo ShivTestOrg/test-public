@@ -15,4 +15,4 @@ plugins:
         model: "openai/o1-mini"
         openAiBaseUrl: "https://openrouter.ai/api/v1"
         maxTokens: 100000
-        maxDepth: 10
+        maxDepth: 2
