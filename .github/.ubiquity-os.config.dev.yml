@@ -4,7 +4,7 @@ plugins:
       - plugin: ShivTestOrg/personal-agent-bridge@clean-commits
         with: {}
   - uses:
-    - plugin: ShivTestOrg/issue-comment-embeddings@linkref
+    - plugin: ShivTestOrg/issue-comment-embeddings@development
       with: 
         matchThreshold: 0.9
         warningThreshold: 0.7
