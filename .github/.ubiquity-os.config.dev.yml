@@ -10,7 +10,7 @@ plugins:
         warningThreshold: 0.7
         jobMatchingThreshold: 0.7
   - uses:
-    - plugin: ShivTestOrg/command-ask:compute.yml@context
+    - plugin: ShivTestOrg/command-ask:compute.yml@development
       with: 
         model: "openai/o1-mini"
         openAiBaseUrl: "https://openrouter.ai/api/v1"
