@@ -4,20 +4,20 @@ plugins:
       - plugin: ShivTestOrg/personal-agent-bridge@clean-commits
         with: {}
   - uses:
-    - plugin: ShivTestOrg/issue-comment-embeddings@development
-      with: 
-        matchThreshold: 0.9
-        warningThreshold: 0.7
-        jobMatchingThreshold: 0.7
+      - plugin: ShivTestOrg/issue-comment-embeddings@development
+        with:
+          matchThreshold: 0.9
+          warningThreshold: 0.7
+          jobMatchingThreshold: 0.7
   - uses:
-    - plugin: ShivTestOrg/command-ask:compute.yml@questionmissing
-      with: 
-        model: "openai/o1-mini"
-        openAiBaseUrl: "https://openrouter.ai/api/v1"
-        maxTokens: 100000
-        maxDepth: 2
+      - plugin: ShivTestOrg/command-ask:compute.yml@questionmissing
+        with:
+          model: "openai/o1-mini"
+          openAiBaseUrl: "https://openrouter.ai/api/v1"
+          maxTokens: 100000
+          maxDepth: 2
   - uses:
-     - plugin: ShivTestOrg/daemon-pricing:compute.yml@development
+      - plugin: ShivTestOrg/daemon-pricing:compute.yml@development
         with:
           labels:
             time:
@@ -33,19 +33,19 @@ plugins:
                 collaboratorOnly: false
               - name: "Time: <1 Week"
                 collaboratorOnly: false
-            priority:
-              - name: "Priority: 0 (Regression)"
-                collaboratorOnly: false
-              - name: "Priority: 1 (Normal)"
-                collaboratorOnly: false
-              - name: "Priority: 2 (Medium)"
-                collaboratorOnly: false
-              - name: "Priority: 3 (High)"
-                collaboratorOnly: false
-              - name: "Priority: 4 (Urgent)"
-                collaboratorOnly: false
-              - name: "Priority: 5 (Emergency)"
-                collaboratorOnly: false
+          priority:
+            - name: "Priority: 0 (Regression)"
+              collaboratorOnly: false
+            - name: "Priority: 1 (Normal)"
+              collaboratorOnly: false
+            - name: "Priority: 2 (Medium)"
+              collaboratorOnly: false
+            - name: "Priority: 3 (High)"
+              collaboratorOnly: false
+            - name: "Priority: 4 (Urgent)"
+              collaboratorOnly: false
+            - name: "Priority: 5 (Emergency)"
+              collaboratorOnly: false
           basePriceMultiplier: 2
           globalConfigUpdate:
             excludeRepos: []
@@ -55,4 +55,4 @@ plugins:
             protectLabels:
               - "priority"
               - "price"
-              - "time" 
+              - "time"
