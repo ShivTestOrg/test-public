@@ -4,19 +4,6 @@ plugins:
       - plugin: ShivTestOrg/personal-agent-bridge@clean-commits
         with: {}
   - uses:
-      - plugin: ShivTestOrg/issue-comment-embeddings@development
-        with:
-          matchThreshold: 0.9
-          warningThreshold: 0.7
-          jobMatchingThreshold: 0.7
-  - uses:
-      - plugin: ShivTestOrg/command-ask:compute.yml@questionmissing
-        with:
-          model: "openai/o1-mini"
-          openAiBaseUrl: "https://openrouter.ai/api/v1"
-          maxTokens: 100000
-          maxDepth: 2
-  - uses:
       - plugin: ShivTestOrg/daemon-pricing:compute.yml@development
         with:
           labels:
@@ -56,3 +43,17 @@ plugins:
               - "priority"
               - "price"
               - "time"
+  - uses:
+      - plugin: ShivTestOrg/issue-comment-embeddings@development
+        with:
+          matchThreshold: 0.9
+          warningThreshold: 0.7
+          jobMatchingThreshold: 0.7
+  - uses:
+      - plugin: ShivTestOrg/command-ask:compute.yml@questionmissing
+        with:
+          model: "openai/o1-mini"
+          openAiBaseUrl: "https://openrouter.ai/api/v1"
+          maxTokens: 100000
+          maxDepth: 2
+  
