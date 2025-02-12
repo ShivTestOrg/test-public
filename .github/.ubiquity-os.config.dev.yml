@@ -44,7 +44,7 @@ plugins:
               - "price"
               - "time"
   - uses:
-      - plugin: ShivTestOrg/issue-comment-embeddings@development
+      - plugin: ShivTestOrg/issue-comment-embeddings@timeout
         with:
           matchThreshold: 0.9
           warningThreshold: 0.7
