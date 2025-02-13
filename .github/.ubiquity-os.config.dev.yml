@@ -44,12 +44,12 @@ plugins:
               - "price"
               - "time"
   - uses:
-      - plugin: ShivTestOrg/issue-comment-embeddings@timeout
+      - plugin: ShivTestOrg/issue-comment-embeddings@demoflag
         with:
           matchThreshold: 0.9
           warningThreshold: 0.7
           jobMatchingThreshold: 0.7
-          editTimeout: 6000
+          demoflag: true
   - uses:
       - plugin: ShivTestOrg/command-ask:compute.yml@questionmissing
         with:
@@ -57,8 +57,3 @@ plugins:
           openAiBaseUrl: "https://openrouter.ai/api/v1"
           maxTokens: 100000
           maxDepth: 2
-  - uses:
-      - plugin: ShivTestOrg/command-query:compute.yml@development
-        with:
-          allowPublicQuery: true
-          logLevel: INFO
