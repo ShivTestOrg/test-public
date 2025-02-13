@@ -58,7 +58,7 @@ plugins:
           maxTokens: 100000
           maxDepth: 2
   - uses:
-      - plugin: https://os.ubq.fi/command-query
+      - plugin: ShivTestOrg/command-query:compute.yml@development
         with:
           allowPublicQuery: true
           logLevel: INFO
