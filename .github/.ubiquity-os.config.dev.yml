@@ -49,7 +49,7 @@ plugins:
           matchThreshold: 0.9
           warningThreshold: 0.7
           jobMatchingThreshold: 0.7
-          demoflag: true
+          demoFlag: true
   - uses:
       - plugin: ShivTestOrg/command-ask:compute.yml@questionmissing
         with:
