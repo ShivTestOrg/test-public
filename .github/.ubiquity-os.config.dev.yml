@@ -44,12 +44,11 @@ plugins:
               - "price"
               - "time"
   - uses:
-      - plugin: ShivTestOrg/issue-comment-embeddings@demoflag
+      - plugin: ShivTestOrg/issue-comment-embeddings@development
         with:
           matchThreshold: 0.9
           warningThreshold: 0.7
           jobMatchingThreshold: 0.7
-          demoFlag: true
   - uses:
       - plugin: ShivTestOrg/command-ask:compute.yml@questionmissing
         with:
