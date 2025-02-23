@@ -1,4 +1,13 @@
 plugins:
+  - uses:
+      - plugin: ShivTestOrg/command-query:compute.yml@development
+        with:
+          allowPublicQuery: true
+          logLevel: INFO
+  - uses:
+     - plugin: ShivTestOrg/command-wallet:compute.yml@development
+       with:
+         registerWalletWithVerification: false
   - skipBotEvents: false
     uses:
       - plugin: ShivTestOrg/personal-agent-bridge@clean-commits
