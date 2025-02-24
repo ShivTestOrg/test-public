@@ -21,8 +21,8 @@ jobs:
   generate:
     uses: mirrajabi/aider-github-workflows/.github/workflows/aider-issue-to-pr.yml@main
     with:
-      issue-number: ${{ inputs.issue-number }}  # Remove quotes
-      base-branch: ${{ inputs.base-branch }}  # Remove quotes
+      issue-number: 270
+      base-branch: '270'
       model: "anthropic/claude-3.5-sonnet"
     secrets:
       openrouter_api_key: ${{ secrets.OPENROUTER_API_KEY }}
