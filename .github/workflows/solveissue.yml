@@ -1,0 +1,78 @@
+name: SWE-agent-bun
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  process_issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Clone SWE-agent
+        run: |
+          git clone https://github.com/princeton-nlp/SWE-agent
+        shell: bash
+
+      - name: Install dependencies
+        run: |
+          cd SWE-agent
+          bun install
+        shell: bash
+
+      - name: Create configuration file
+        run: |
+          cd SWE-agent
+          cat > keys.cfg << EOL
+          GITHUB_TOKEN: '${{ secrets.GITHUB_ACCESS_TOKEN }}'
+          OPENAI_API_KEY: '${{ secrets.OPENAI_API_KEY }}'
+          ANTHROPIC_API_KEY: '${{ secrets.ANTHROPIC_API_KEY }}'
+          TOGETHER_API_KEY: ''
+          EOL
+        shell: bash
+
+      - name: Process issue and create solution
+        env:
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}
+          ANTHROPIC_BASE_URL: "https://openrouter.ai/api/v1"
+        run: |
+          cd SWE-agent
+          bun run process-issue \
+            --model gpt4 \
+            --issueUrl $ISSUE_URL \
+            --config config/default_from_url.yaml \
+            --costLimit 3.0
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+
+      - name: Create PR branch
+        run: |
+          BRANCH_NAME="fix/issue-${{ github.event.issue.number }}"
+          git checkout -b $BRANCH_NAME
+          git add .
+          git commit -m "fix: Implement solution for issue #${{ github.event.issue.number }}"
+          git push origin $BRANCH_NAME
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_ACCESS_TOKEN }}
+          commit-message: "fix: Implement solution for issue #${{ github.event.issue.number }}"
+          title: "fix: Solution for issue #${{ github.event.issue.number }}"
+          body: |
+            This PR implements a solution for issue #${{ github.event.issue.number }}
+            
+            Automated changes by SWE-agent
+          branch: fix/issue-${{ github.event.issue.number }}
+          base: main
+          draft: false
