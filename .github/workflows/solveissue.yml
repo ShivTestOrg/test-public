@@ -29,15 +29,20 @@ jobs:
       - name: Clone SWE-agent
         run: |
           git clone https://github.com/princeton-nlp/SWE-agent
+          ls -la SWE-agent  # Verify contents
         shell: bash
       - name: Create environment
         run: |
           cd SWE-agent
+          if [ ! -f "environment.yml" ]; then
+            echo "Error: environment.yml not found!"
+            exit 1
+          fi
           conda env create -f environment.yml
         shell: bash
       - name: Run setup script and create keys.cfg
         run: |
-          source $(conda info --base)/etc/profile.d/conda.sh
+          eval "$(conda shell.bash hook)"
           conda activate swe-agent
           cd SWE-agent
           chmod +x setup.sh
