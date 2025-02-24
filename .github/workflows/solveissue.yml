@@ -21,66 +21,71 @@ jobs:
           bun install
         shell: bash
 
-      # Setup Python for SWE-agent
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Setup Miniconda
+        uses: conda-incubator/setup-miniconda@v2
         with:
-          python-version: '3.10'
-          cache: 'pip'
-
+          miniconda-version: "latest"
+          architecture: x64
       - name: Clone SWE-agent
         run: |
           git clone https://github.com/princeton-nlp/SWE-agent
         shell: bash
-
-      - name: Install SWE-agent dependencies
+      - name: Create environment
         run: |
           cd SWE-agent
-          pip install -r requirements.txt
+          conda env create -f environment.yml
         shell: bash
-
-      - name: Create configuration files
+      - name: Run setup script and create keys.cfg
         run: |
+          source $(conda info --base)/etc/profile.d/conda.sh
+          conda activate swe-agent
           cd SWE-agent
-          # Create keys.cfg for SWE-agent
-          cat > keys.cfg << EOL
-          GITHUB_TOKEN: '${{ secrets.GITHUB_ACCESS_TOKEN }}'
-          OPENAI_API_KEY: '${{ secrets.OPENAI_API_KEY }}'
-          ANTHROPIC_API_KEY: '${{ secrets.OPENROUTER_API_KEY }}'
-          TOGETHER_API_KEY: ''
-          EOL
-          
-          # Create .env for OpenRouter configuration
-          cat > .env << EOL
-          ANTHROPIC_BASE_URL=https://openrouter.ai/api/v1
-          EOL
+          chmod +x setup.sh
+          ./setup.sh
+          echo "GITHUB_TOKEN: '${{ secrets.GITHUB_ACCESS_TOKEN }}'" > keys.cfg
+          echo "OPENAI_API_KEY: '${{ secrets.OPENAI_API_KEY }}'" >> keys.cfg
+          echo "ANTHROPIC_API_KEY: '${{ secrets.ANTHROPIC_API_KEY }}'" >> keys.cfg
+          echo "TOGETHER_API_KEY: ''" >> keys.cfg
         shell: bash
-
-      - name: Process issue with SWE-agent
+      - name: Run script with environment variables
         env:
           ISSUE_URL: ${{ github.event.issue.html_url }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}
-          ANTHROPIC_BASE_URL: "https://openrouter.ai/api/v1"
         run: |
+          source $(conda info --base)/etc/profile.d/conda.sh
+          conda activate swe-agent
           cd SWE-agent
-          python run.py \
-            --model_name claude-3-opus-20240229 \
+          python run.py --model_name gpt4 \
             --data_path $ISSUE_URL \
             --config_file config/default_from_url.yaml \
             --open_pr true \
             --per_instance_cost_limit 3.0
+        shell: bash
+
+      - name: Run script with environment variables
+        env:
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+        run: |
+          source $(conda info --base)/etc/profile.d/conda.sh
+          conda activate swe-agent
+          cd SWE-agent
+          python run.py --model_name gpt4 \
+            --data_path $ISSUE_URL \
+            --config_file config/default_from_url.yaml \
+            --open_pr true \
+            --per_instance_cost_limit 3.0
+        shell: bash
 
       - name: Configure Git
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
 
-      # Process repository changes with Bun
-      - name: Run repository build/tests
-        run: |
-          bun run build
-          bun run test
-        shell: bash
+      # # Process repository changes with Bun
+      # - name: Run repository build/tests
+      #   run: |
+      #     bun run build
+      #     bun run test
+      #   shell: bash
 
       - name: Create PR branch
         run: |
