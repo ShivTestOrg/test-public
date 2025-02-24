@@ -21,29 +21,20 @@ jobs:
           bun install
         shell: bash
 
-      - name: Setup Miniconda
-        uses: conda-incubator/setup-miniconda@v2
-        with:
-          miniconda-version: "latest"
-          architecture: x64
       - name: Clone SWE-agent
         run: |
-          git clone https://github.com/princeton-nlp/SWE-agent
-          ls -la SWE-agent  # Verify contents
+          git clone https://github.com/SWE-agent/SWE-agent.git
         shell: bash
-      - name: Create environment
+
+      - name: Install Python Dependencies
         run: |
           cd SWE-agent
-          if [ ! -f "environment.yml" ]; then
-            echo "Error: environment.yml not found!"
-            exit 1
-          fi
-          conda env create -f environment.yml
+          python -m pip install --upgrade pip
+          pip install --editable .
         shell: bash
+
       - name: Run setup script and create keys.cfg
         run: |
-          eval "$(conda shell.bash hook)"
-          conda activate swe-agent
           cd SWE-agent
           chmod +x setup.sh
           ./setup.sh
@@ -52,12 +43,11 @@ jobs:
           echo "ANTHROPIC_API_KEY: '${{ secrets.ANTHROPIC_API_KEY }}'" >> keys.cfg
           echo "TOGETHER_API_KEY: ''" >> keys.cfg
         shell: bash
+
       - name: Run script with environment variables
         env:
           ISSUE_URL: ${{ github.event.issue.html_url }}
         run: |
-          source $(conda info --base)/etc/profile.d/conda.sh
-          conda activate swe-agent
           cd SWE-agent
           python run.py --model_name gpt4 \
             --data_path $ISSUE_URL \
@@ -66,19 +56,6 @@ jobs:
             --per_instance_cost_limit 3.0
         shell: bash
 
-      - name: Run script with environment variables
-        env:
-          ISSUE_URL: ${{ github.event.issue.html_url }}
-        run: |
-          source $(conda info --base)/etc/profile.d/conda.sh
-          conda activate swe-agent
-          cd SWE-agent
-          python run.py --model_name gpt4 \
-            --data_path $ISSUE_URL \
-            --config_file config/default_from_url.yaml \
-            --open_pr true \
-            --per_instance_cost_limit 3.0
-        shell: bash
 
       - name: Configure Git
         run: |
