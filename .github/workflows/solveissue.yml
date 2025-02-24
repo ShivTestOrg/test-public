@@ -19,3 +19,4 @@ jobs:
       model: "anthropic/claude-3.5-sonnet"
     secrets: 
       openrouter_api_key: ${{ secrets.OPENROUTER_API_KEY }}
+      github_token: ${{ secrets.PAT }}
