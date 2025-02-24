@@ -6,11 +6,11 @@ on:
       issue-number:
         description: "Issue Number"
         required: true
-        type: string  # Ensure it's a string
+        type: string
       base-branch:
         description: "Base Branch"
         required: true
-        type: string  # Ensure it's a string
+        type: string
 
 permissions:
   contents: write
@@ -21,8 +21,8 @@ jobs:
   generate:
     uses: mirrajabi/aider-github-workflows/.github/workflows/aider-issue-to-pr.yml@main
     with:
-      issue-number: "${{ inputs.issue-number }}"  # Explicitly ensure it's treated as a string
-      base-branch: "${{ inputs.base-branch }}"  # Explicitly ensure it's treated as a string
+      issue-number: ${{ inputs.issue-number }}  # Remove quotes
+      base-branch: ${{ inputs.base-branch }}  # Remove quotes
       model: "anthropic/claude-3.5-sonnet"
     secrets:
       openrouter_api_key: ${{ secrets.OPENROUTER_API_KEY }}
