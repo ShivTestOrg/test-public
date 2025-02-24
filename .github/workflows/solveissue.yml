@@ -1,4 +1,4 @@
-name: SWE-agent-bun
+name: SWE-agent-hybrid
 on:
   issues:
     types: [opened]
@@ -10,50 +10,77 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Setup Bun for repository
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
         with:
           bun-version: latest
+
+      - name: Install repository dependencies
+        run: |
+          bun install
+        shell: bash
+
+      # Setup Python for SWE-agent
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
 
       - name: Clone SWE-agent
         run: |
           git clone https://github.com/princeton-nlp/SWE-agent
         shell: bash
 
-      - name: Install dependencies
+      - name: Install SWE-agent dependencies
         run: |
           cd SWE-agent
-          bun install
+          pip install -r requirements.txt
         shell: bash
 
-      - name: Create configuration file
+      - name: Create configuration files
         run: |
           cd SWE-agent
+          # Create keys.cfg for SWE-agent
           cat > keys.cfg << EOL
           GITHUB_TOKEN: '${{ secrets.GITHUB_ACCESS_TOKEN }}'
           OPENAI_API_KEY: '${{ secrets.OPENAI_API_KEY }}'
-          ANTHROPIC_API_KEY: '${{ secrets.ANTHROPIC_API_KEY }}'
+          ANTHROPIC_API_KEY: '${{ secrets.OPENROUTER_API_KEY }}'
           TOGETHER_API_KEY: ''
+          EOL
+          
+          # Create .env for OpenRouter configuration
+          cat > .env << EOL
+          ANTHROPIC_BASE_URL=https://openrouter.ai/api/v1
           EOL
         shell: bash
 
-      - name: Process issue and create solution
+      - name: Process issue with SWE-agent
         env:
           ISSUE_URL: ${{ github.event.issue.html_url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}
           ANTHROPIC_BASE_URL: "https://openrouter.ai/api/v1"
         run: |
           cd SWE-agent
-          bun run process-issue \
-            --model gpt4 \
-            --issueUrl $ISSUE_URL \
-            --config config/default_from_url.yaml \
-            --costLimit 3.0
+          python run.py \
+            --model_name claude-3-opus-20240229 \
+            --data_path $ISSUE_URL \
+            --config_file config/default_from_url.yaml \
+            --open_pr true \
+            --per_instance_cost_limit 3.0
 
       - name: Configure Git
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
+
+      # Process repository changes with Bun
+      - name: Run repository build/tests
+        run: |
+          bun run build
+          bun run test
+        shell: bash
 
       - name: Create PR branch
         run: |
@@ -73,6 +100,9 @@ jobs:
             This PR implements a solution for issue #${{ github.event.issue.number }}
             
             Automated changes by SWE-agent
+            
+            - Solution generated using Claude 3 Opus via OpenRouter
+            - Build and tests passed using Bun
           branch: fix/issue-${{ github.event.issue.number }}
           base: main
           draft: false
