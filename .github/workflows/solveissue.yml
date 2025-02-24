@@ -33,28 +33,20 @@ jobs:
           pip install --editable .
         shell: bash
 
-      - name: Run setup script and create keys.cfg
+      - name: Run SWE-Agent
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}
         run: |
           cd SWE-agent
-          chmod +x setup.sh
-          ./setup.sh
-          echo "GITHUB_TOKEN: '${{ secrets.GITHUB_ACCESS_TOKEN }}'" > keys.cfg
-          echo "OPENAI_API_KEY: '${{ secrets.OPENAI_API_KEY }}'" >> keys.cfg
-          echo "ANTHROPIC_API_KEY: '${{ secrets.ANTHROPIC_API_KEY }}'" >> keys.cfg
-          echo "TOGETHER_API_KEY: ''" >> keys.cfg
+          sweagent run \
+            --agent.model.name=claude-3-5-sonnet-20241022 \
+            --agent.model.per_instance_cost_limit=2.00 \
+            --env.repo.github_url=https://github.com/SWE-agent/test-repo \
+            --problem_statement.github_url=${{ github.event.issue.html_url }}
         shell: bash
 
-      - name: Run script with environment variables
-        env:
-          ISSUE_URL: ${{ github.event.issue.html_url }}
-        run: |
-          cd SWE-agent
-          python run.py --model_name gpt4 \
-            --data_path $ISSUE_URL \
-            --config_file config/default_from_url.yaml \
-            --open_pr true \
-            --per_instance_cost_limit 3.0
-        shell: bash
 
 
       - name: Configure Git
