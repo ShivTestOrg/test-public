@@ -65,4 +65,3 @@ plugins:
           openAiBaseUrl: "https://openrouter.ai/api/v1"
           maxTokens: 100000
           maxDepth: 2
-          processDriveLinks: false
