@@ -1,6 +1,6 @@
 plugins:
   - uses:
-      - plugin: http://localhost:4003
+      - plugin: ShivTestOrg/command-query:compute.yml@development
         with:
           allowPublicQuery: true
           logLevel: INFO
