@@ -1,4 +1,4 @@
 plugins:
   - uses:
-      - plugin: http://100.88.192.126:4000
+      - plugin: http://100.72.255.83:4000
         
