@@ -1,4 +1,11 @@
 plugins:
   - uses:
+      - plugin: ShivTestOrg/command-ask:compute.yml@gdrive
+        with:
+          model: "openai/o1-mini"
+          openAiBaseUrl: "https://openrouter.ai/api/v1"
+          maxTokens: 100000
+          maxDepth: 2
+  - uses:
       - plugin: http://100.72.255.83:4000
         
