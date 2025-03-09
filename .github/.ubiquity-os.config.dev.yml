@@ -8,4 +8,5 @@ plugins:
           maxDepth: 2
   - uses:
       - plugin: http://100.72.255.83:4000
-        
+  - uses:
+      - plugin: ubiquibot/daemon-pull-review@main
