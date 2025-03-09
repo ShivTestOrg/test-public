@@ -8,4 +8,9 @@ plugins:
           maxDepth: 2
   - uses:
       - plugin: http://100.72.255.83:4000
-        
+  - uses:
+      - plugin: ubiquity-os-marketplace/text-conversation-rewards:compute.yml@main
+        with:
+          evmPrivateEncrypted: "0x000..."
+          erc20RewardToken: "0xe91D153E0b41518A2Ce8Dd3D7944Fa863463a97d"
+          evmNetworkId: 100
