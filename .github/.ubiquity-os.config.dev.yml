@@ -8,4 +8,8 @@ plugins:
           maxDepth: 2
   - uses:
       - plugin: http://100.72.255.83:4000
-        
+  - uses:
+      - plugin: ubiquity-os-marketplace/daemon-pull-review:compute.yml@gdrive
+        with:
+          openRouterAiModel: "anthropic/claude-3.5-sonnet"
+          openRouterBaseUrl: "https://openrouter.ai/api/v1"
