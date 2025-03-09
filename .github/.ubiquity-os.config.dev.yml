@@ -1,6 +1,6 @@
 plugins:
   - uses:
-      - plugin: ShivTestOrg/command-ask:compute.yml@gdrive
+      - plugin: ubiquity-os-marketplace/command-ask:compute.yml@gdrive
         with:
           model: "openai/o1-mini"
           openAiBaseUrl: "https://openrouter.ai/api/v1"
