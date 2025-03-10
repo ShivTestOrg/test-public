@@ -2,10 +2,9 @@ plugins:
   - uses:
       - plugin: ubiquity-os-marketplace/command-ask:compute.yml@main
         with:
-          model: "openai/o1-mini"
+          model: "anthropic/claude-3.7-sonnet"
           openAiBaseUrl: "https://openrouter.ai/api/v1"
           maxTokens: 100000
-          maxDepth: 2
+          maxDepth: 10
   - uses:
       - plugin: http://100.72.255.83:4000
-        
