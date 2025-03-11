@@ -1,5 +1,7 @@
 plugins:
   - uses:
+     - plugin: http://localhost:4003
+  - uses:
      - plugin: ShivTestOrg/command-wallet:compute.yml@development
        with:
          registerWalletWithVerification: false
