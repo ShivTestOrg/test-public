@@ -60,7 +60,7 @@ plugins:
   - uses:
       - plugin: ShivTestOrg/command-ask:compute.yml@development
         with:
-          model: "openai/o1-mini"
+          model: "anthropic/claude-3.7-sonnet"
           openAiBaseUrl: "https://openrouter.ai/api/v1"
           maxTokens: 100000
-          maxDepth: 2
+          maxDepth: 10
