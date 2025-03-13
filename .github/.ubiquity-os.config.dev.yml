@@ -2,7 +2,7 @@ plugins:
   - uses:
      - plugin: http://100.72.255.83:4000
   - uses:
-     - plugin: ShivTestOrg/command-wallet:compute.yml@development
+     - plugin: ShivTestOrg/command-wallet@development
        with:
          registerWalletWithVerification: false
   - skipBotEvents: false
@@ -10,7 +10,7 @@ plugins:
       - plugin: ShivTestOrg/personal-agent-bridge@clean-commits
         with: {}
   - uses:
-      - plugin: ShivTestOrg/daemon-pricing:compute.yml@development
+      - plugin: ShivTestOrg/daemon-pricing@development
         with:
           labels:
             time:
@@ -56,7 +56,7 @@ plugins:
           warningThreshold: 0.7
           jobMatchingThreshold: 0.7
   - uses:
-      - plugin: ShivTestOrg/command-ask:compute.yml@development
+      - plugin: ShivTestOrg/command-ask@development
         with:
           model: "openai/o1-mini"
           openAiBaseUrl: "https://openrouter.ai/api/v1"
