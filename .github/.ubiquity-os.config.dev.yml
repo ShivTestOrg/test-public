@@ -1,6 +1,6 @@
 plugins:
   - uses:
-      - plugin:  ShivTestOrg/command-ask@callback
+      - plugin: http://localhost:4005
         with:
           model: "openai/o1-mini"
           openAiBaseUrl: "https://openrouter.ai/api/v1"
