@@ -1,6 +1,6 @@
 plugins:
   - uses:
-      - plugin: http://localhost:4001
+      - plugin: ShivTestOrg/daemon-pricing@apipricing
         with:
           labels:
             time:
