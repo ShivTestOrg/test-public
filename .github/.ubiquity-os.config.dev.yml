@@ -16,6 +16,7 @@ plugins:
               - name: "Priority: 4 (Urgent)"
               - name: "Priority: 5 (Emergency)"
           basePriceMultiplier: 1
+          enablePartialAutoEstimation: true
           enableAutoTimeEstimation: true
           
   
