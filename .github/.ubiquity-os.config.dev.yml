@@ -18,5 +18,6 @@ plugins:
           basePriceMultiplier: 1
           autoLabeling:
             enabled: true
+            mode: "partial"
           
   
