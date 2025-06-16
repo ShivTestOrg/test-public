@@ -17,6 +17,6 @@ plugins:
               - name: "Priority: 5 (Emergency)"
           basePriceMultiplier: 1
           autoLabeling:
-            enable: true
+            enabled: true
           
   
