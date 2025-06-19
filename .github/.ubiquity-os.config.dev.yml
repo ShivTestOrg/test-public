@@ -19,5 +19,9 @@ plugins:
           autoLabeling:
             enabled: true
             mode: "full"
-          
-  
+  - uses:
+      - plugin: ShivTestOrg/issue-comment-embeddings@development
+        with:
+          matchThreshold: 0.9
+          warningThreshold: 0.7
+          jobMatchingThreshold: 0.7
