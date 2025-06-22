@@ -19,10 +19,3 @@ plugins:
           autoLabeling:
             enabled: true
             mode: "full"
-  - uses:
-      - plugin: ShivTestOrg/issue-comment-embeddings@development
-        with:
-          dedupeMatchThreshold: 0.9
-          dedupeWarningThreshold: 0.7
-          jobMatchingThreshold: 0.7
-          editTimeout: 0
