@@ -1,6 +1,6 @@
 plugins:
   - uses:
-      - plugin: http://localhost:4001
+      - plugin: https://daemon-pricing-apipricing.deno.dev
         with:
           labels:
             time:
