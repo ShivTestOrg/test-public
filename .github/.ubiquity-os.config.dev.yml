@@ -1,7 +1,8 @@
 plugins:
-  - uses: http://localhost:4004
-    with:
-      dedupeMatchThreshold: 0.9
-      dedupeWarningThreshold: 0.7
-      jobMatchingThreshold: 0.7
-      editTimeout: 0
+  - uses:
+      - plugin: http://localhost:4004
+        with:
+          dedupeMatchThreshold: 0.9
+          dedupeWarningThreshold: 0.7
+          jobMatchingThreshold: 0.7
+          editTimeout: 0
