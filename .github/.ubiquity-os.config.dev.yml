@@ -6,3 +6,4 @@ plugins:
           dedupeWarningThreshold: 0.7
           jobMatchingThreshold: 0.7
           editTimeout: 0
+          demoFlag: true
