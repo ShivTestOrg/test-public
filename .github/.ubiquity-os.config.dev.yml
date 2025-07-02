@@ -5,3 +5,4 @@ plugins:
           dedupeMatchThreshold: 0.9
           dedupeWarningThreshold: 0.7
           jobMatchingThreshold: 0.7
+          editTimeout: 0
