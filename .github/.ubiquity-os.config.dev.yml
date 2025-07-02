@@ -1,6 +1,6 @@
 plugins:
   - uses:
-      - plugin: http://localhost:4004
+      - plugin: ShivTestOrg/issue-comment-embeddings@demoflag
         with:
           dedupeMatchThreshold: 0.9
           dedupeWarningThreshold: 0.7
