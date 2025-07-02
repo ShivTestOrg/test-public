@@ -1,5 +1,5 @@
 plugins:
-  - uses: http://localhost4004
+  - uses: http://localhost:4004
     with:
       dedupeMatchThreshold: 0.9
       dedupeWarningThreshold: 0.7
