@@ -1,5 +1,5 @@
 plugins:
   - uses:
-      - plugin: ShivTestOrg/plugin-autopricing@development
+      - plugin: ShivTestOrg/plugin-autoprice@development
         with:
           basePriceMultiplier: 1.5
