@@ -1,9 +1,5 @@
 plugins:
   - uses:
-      - plugin: ShivTestOrg/issue-comment-embeddings@demoflag
+      - plugin: ShivTestOrg/plugin-autopricing@development
         with:
-          dedupeMatchThreshold: 0.9
-          dedupeWarningThreshold: 0.7
-          jobMatchingThreshold: 0.7
-          editTimeout: 0
-          demoFlag: true
+          basePriceMultiplier: 1.5
