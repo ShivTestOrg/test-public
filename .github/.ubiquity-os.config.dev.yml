@@ -2,4 +2,7 @@ plugins:
   - uses:
       - plugin: ShivTestOrg/plugin-autoprice@development
         with:
-          basePriceMultiplier: 1.5
+          maxSimilarIssue: 2
+          elevatedPriorityLabel: "Boosted"
+          priorityMultiplier: 1.5
+          basePriceMultiplier: 1.0
