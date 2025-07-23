@@ -4,5 +4,5 @@ plugins:
         with:
           maxSimilarIssues: 2
           elevatedPriorityLabel: "Boosted"
-          priorityMultiplier: 1.5
+          priorityMultiplier: 2
           basePriceMultiplier: 1.0
