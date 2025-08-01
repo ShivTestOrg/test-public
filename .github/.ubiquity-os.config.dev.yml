@@ -5,6 +5,6 @@ plugins:
           maxSimilarIssues: 2
           elevatedPriorityLabel: "Boosted"
           priorityMultiplier: 2
-          crossLinkedIssueBoost: true,
-          priorityMultiplierDebug: true,
+          crossLinkedIssueBoost: true
+          priorityMultiplierDebug: true
           basePriceMultiplier: 1.0
