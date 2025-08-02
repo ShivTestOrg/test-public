@@ -1,7 +1,7 @@
 plugins:
-  - skipBotEvents: false
-    uses:
+  - uses:
       - plugin: http://localhost:4000
+        skipBotEvents: false
         with:
           maxSimilarIssues: 2
           elevatedPriorityLabel: "Boosted"
