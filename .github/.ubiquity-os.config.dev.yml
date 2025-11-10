@@ -9,3 +9,9 @@ plugins:
           crossLinkedIssueBoost: true
           priorityMultiplierDebug: true
           basePriceMultiplier: 1.0
+      agents:
+    - plugin: http://agent-structured-thinking.deno.dev
+      with:
+        model: "gpt-4o"
+        temperature: 0.7
+        max_tokens: 2048
